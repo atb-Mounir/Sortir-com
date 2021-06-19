@@ -1,0 +1,30 @@
+<h6 class="display-4">Liste des participants inscrits:</h6>
+<div class="row justify-content-center">
+    <div class="col-4">
+<table class="table" style="font-size : 2em;">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Pseudo</th>
+        <th scope="col">Nom</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% set nbParticipant=1 %}
+    {% for participant in sorties.relation %}
+    <tr>
+        <th scope="row">{{ nbParticipant }}</th>
+        <td>
+            <a href="{{ path("participant_autreProfil", {"id" : participant.id}) }}">
+            {{ participant.pseudo }}
+            </a>
+        </td>
+        <td>{{ participant.nom }}</td>
+    </tr>
+        {% set nbParticipant=nbParticipant+1 %}
+    {% endfor %}
+    </tbody>
+</table>
+    </div>
+</div>

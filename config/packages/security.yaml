@@ -1,0 +1,57 @@
+security:
+    encoders:
+        App\Entity\Participant:
+            algorithm: bcrypt
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        participant_provider:
+            entity:
+                class: App\Entity\Participant
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            provider: participant_provider
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /login
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                #always_remember_me: true
+
+            guard:
+                authenticators:
+                    - App\Security\LoginAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+        # rôles prédéfinis :
+        #  - IS_AUTHENTICATED_ANONYMOUSLY = tous les utilisateurs
+        #  - IS_AUTHENTICATED_REMEMBERED = tous les utilisateurs déjà authentifiés
+        #                                  via login ou "remember me"
+        #  - IS_AUTHENTICATED_FULLY = tous les utilisateurs déjà authentifiés
+        #       via login UNIQUEMENT
+
+    access_control:
+        - { path: ^/register, roles: ROLE_ADMIN }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+        #- { path: ^/monProfil, roles: IS_AUTHENTICATED_FULLY }
+        #- { path: ^/profil, roles: IS_AUTHENTICATED_FULLY }
+        #- { path: ^/listeSortie, roles: IS_AUTHENTICATED_FULLY }
+

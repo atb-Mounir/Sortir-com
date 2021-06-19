@@ -1,0 +1,70 @@
+{% extends("base.html.twig") %}
+
+{% block title %}
+    Sortie.com | Profil de {{ participant.pseudo }}
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-md-auto">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-header">
+                        <h2>{{ participant.pseudo }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Nom :</p>
+                                    </th>
+                                    <td>
+                                        <p>{{ participant.nom }}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Prénom :</p>
+                                    </th>
+                                    <td>
+                                        <p>{{ participant.prenom }}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Téléphone :</p>
+                                    </th>
+                                    <td>
+                                        <p>{{ participant.telephone }}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Email :</p>
+                                    </th>
+                                    <td>
+                                        <p>{{ participant.mail }}</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-md-auto">
+                <a href="{{ path("sortie_liste")}}" class="btn btn-primary">Retour</a>
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+    </div>
+{% endblock %}

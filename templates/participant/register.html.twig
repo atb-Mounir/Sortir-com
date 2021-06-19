@@ -1,0 +1,27 @@
+{% extends 'base.html.twig'  %}
+
+{% block header %}
+    {{ include('inc/_navbarThemeRegna.html.twig') }}
+    <!--==========================
+   Hero Section
+   ============================-->
+    <section id="hero">
+        <video autoplay muted loop id="myVideo">
+            <source src="{{ asset('img/Night.mp4') }}" type="video/mp4">
+        </video>
+        <div class="hero-container">
+            <h1>Inscription</h1>
+            {{ form_start(registerForm) }}
+            {{ form_widget(registerForm) }}
+            <button type="submit" class="btn-get-started">Enregistrer</button>
+            {{ form_end(registerForm) }}
+        </div>
+    </section><!-- #hero -->
+{% endblock %}
+{% block main %}
+
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Inscription
+{% endblock %}

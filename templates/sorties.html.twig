@@ -1,0 +1,24 @@
+{% extends("base.html.twig") %}
+
+{% block title %}
+    Sortir.com
+{% endblock %}
+{% block header %}
+    {{ include('inc/_navbarThemeRegna.html.twig') }}
+    <!--==========================
+   Hero Section
+   ============================-->
+    <section id="hero">
+        <div class="hero-container">
+            <h1>Sortir.com</h1>
+            <a href="#about" class="btn-get-started">Afficher les sorties</a>
+        </div>
+    </section><!-- #hero -->
+{% endblock %}
+{% block main %}
+    <div class="container " id="listeSortie">
+        {{ include('inc/_filtreSorties.html.twig') }}
+        {{ include('inc/_liste_sorties.html.twig') }}
+    </div>
+{% endblock %}
+

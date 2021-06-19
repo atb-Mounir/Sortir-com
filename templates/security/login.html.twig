@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion!{% endblock %}
+{% block header %}
+         <!--==========================
+        Hero Section
+        ============================-->
+        <section id="hero">
+            <video autoplay muted loop id="myVideo">
+                <source src="{{ asset('img/Night.mp4') }}" type="video/mp4">
+            </video>
+            <div class="hero-container">
+                <h1>Sortir.com</h1>
+                <form method="post" class="contactForm">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            Vous êtes bien connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Deconnexion</a>
+                        </div>
+                    {% endif %}
+
+                    <label for="inputPseudo" style="color: white;">Pseudo ou Email</label>
+                    <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required autofocus>
+                    <label for="inputPassword" style="color: white;">Mot de Passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    {#
+                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                        See https://symfony.com/doc/current/security/remember_me.html
+                    #}
+                    <div class="checkbox mb-3">
+                        <label for="_remember_me" style="color: white;">Se souvenir de moi</label>
+                        <input type="checkbox" name="_remember_me">
+                    </div>
+
+
+                    <button class="btn-get-started" type="submit">
+                        Connexion
+                    </button>
+                </form>
+
+            </div>
+        </section><!-- #hero -->
+{% endblock %}
+{% block main %}
+
+{% endblock %}

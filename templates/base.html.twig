@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+
+    <title>{% block title %}Sortir.com{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Anton|Inter&display=swap" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+        {{ include('inc/_link.html.twig') }}
+
+    {% endblock %}
+</head>
+<body>
+<video autoplay muted loop id="myVideo">
+    <source src="{{ asset('img/Night.mp4') }}" type="video/mp4">
+</video>
+{% block body %}
+    <header>
+        <div id="msg">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% block header %}
+        {#include du fichier twig contenant les liens#}
+        {{ include('inc/_navbarThemeRegna.html.twig') }}
+
+        {% endblock %}
+    </header>
+
+    <main id="main">
+        <section id="about">
+            {% block main %}
+            {% endblock %}
+        </section>
+    </main>
+{% endblock %}
+<footer>
+    <div id="copyright">&copy;LesSurvivantsEparpillés{{ "now" |date("Y") }}</div>
+</footer>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+{% block javascripts %}
+    {{ include('inc/_javascript.html.twig') }}
+    <script type="text/javascript" src="../jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        $('.form_datetime').datetimepicker({
+            language: 'fr',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 0
+        });
+    </script>
+{% endblock %}
+
+
+
+</body>
+</html>

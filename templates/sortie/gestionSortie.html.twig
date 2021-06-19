@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {{ include('inc/_navbarThemeRegna.html.twig') }}
+    <!--==========================
+   Hero Section
+   ============================-->
+    <section id="hero">
+        <video autoplay muted loop id="myVideo">
+            <source src="{{ asset('img/Night.mp4') }}" type="video/mp4">
+        </video>
+        <div class="hero-container">
+            {% if sortie is defined %}
+                <h1>Modification d'une sortie</h1>
+            {% else %}
+                <h1>Création d'une sortie</h1>
+            {% endif %}
+
+            {{ form_start(creerSortieForm) }}
+
+            {{ form_row(creerSortieForm.nom) }}
+            {{ form_row(creerSortieForm.dateHeureDebut) }}
+            {{ form_row(creerSortieForm.duree) }}
+            {{ form_row(creerSortieForm.dateLimiteInscription) }}
+            {{ form_row(creerSortieForm.nbInscriptioonsMax) }}
+            {{ form_row(creerSortieForm.infosSortie) }}
+            <p>Site organisateur : {{ participant.site.nom }}</p>
+            {{ form_row(creerSortieForm.lieu) }}
+            <div class="row">
+                <div class="col-sm">
+                </div>
+                <div class="col-md-auto">
+                    {{ form_row(creerSortieForm.enregistrer) }}
+                </div>
+                <div class="col-md-auto">
+                    {{ form_row(creerSortieForm.publier) }}
+                </div>
+                {% if sortie is defined %}
+                    <div class="col-md-auto">
+                        <a href="{{ path("gestionEtat_supprimer", {"id" : sortie.id }) }}" class="btn btn-primary">Supprimer</a>
+                    </div>
+                {% endif %}
+                <div class="col-md-auto">
+                    <a href="{{ path("sortie_liste") }}" class="btn btn-primary">Annuler</a>
+                </div>
+                <div class="col-sm">
+                </div>
+            </div>
+            {{ form_end(creerSortieForm) }}
+        </div>
+    </section><!-- #hero -->
+{% endblock %}
+{% block title %}
+    {% if sortie is defined %}
+        Modification d'une sortie
+    {% else %}
+        Création d'une sortie
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+
+
+{% endblock %}

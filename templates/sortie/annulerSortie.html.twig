@@ -1,0 +1,56 @@
+{% extends("base.html.twig") %}
+
+{% block title %}
+    Annuler la sortie
+{% endblock %}
+
+{% block main %}
+
+    <div id="msg">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+    <h1 class="text-center">Annuler une sortie</h1>
+        <div class="form-group row justify-content-center">
+            <label for="nom" class="col-sm-2 col-form-label">Nom : </label>
+            <div class="col-sm-5">
+                <p  class="form-control" >{{ sortie.nom }}</p>
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label for="dateHeureDebut" class="col-sm-2 col-form-label">Date : </label>
+            <div class="col-sm-5">
+                <p class="form-control">{{ sortie.dateHeureDebut | date('Y-m-d')}}</p>
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label for="site" class="col-sm-2 col-form-label">Ville organisatrice : </label>
+            <div class="col-sm-5">
+                <p class="form-control">{{ sortie.site.nom }}</p>
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label for="adresse" class="col-sm-2 col-form-label">Adresse : </label>
+            <div class="col-sm-5">
+                <p class="form-control">{{sortie.lieu.nom}} {{ sortie.lieu.rue }} {{ sortie.lieu.ville.codePostal }} {{ sortie.lieu.ville.nom}}</p>
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label for="motifAnnulation" class="col-sm-2 col-form-label">Motif d'annulation : </label>
+            <div class="col-sm-5">
+                {{ form_start(sortieForm) }}
+                {{ form_widget(sortieForm) }}
+                <button type="submit" class="btn btn-primary" value="validerAnnulation">Valider l'annulation</button>
+                <a class="btn btn-primary" href="{{ path('sortie_liste') }}">Annuler</a>
+                {{ form_end(sortieForm) }}
+            </div>
+        </div>
+
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'bundles/TwigBundle/Exception/errorLayout.html.twig' %}
+
+{% block main %}
+
+    {{ parent() }}
+    <h1>est défectueuse !</h1>
+    <a href="{{ path('app_login') }}" class="btn btn-light">Page d'accueil</a>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends("base.html.twig") %}
+
+{% block title %}
+    Sortie.com
+{% endblock %}
+
+{% block main %}
+
+
+    {# ABOUT US SECTION #}
+    <section id="about">
+        <div class="container">
+            <div class="row about-container">
+
+                <div class="col-lg-6 content order-lg-1 order-2">
+
+                    <h2 class="title">{{ participant.getPseudo() }}</h2>
+                    <p>
+                        Curieux de nature, j'aime apprendre sans cesse et évoluer.
+                        Ainsi peuvent en témoigner mes différentes formations et expériences professionnelles
+                        grâce auxquelles j'ai pû acquérir un esprit d'analyse et d'anticipation, de la rigueur et le sens du professionnalisme.
+                        Aujourd'hui, je souhaite mettre tout mon sérieux et mon énergie positive au service de ma future équipe.
+                        Mon objectif professionnel est de devenir Développeur d'Application.
+                    </p>
+
+                    <div class="icon-box wow fadeInUp">
+                        <div class="icon"><i class="fa fa-shopping-bag"></i></div>
+                        <h4 class="title">{{ participant.getPrenom() }}</h4>
+                        <p class="description">Prenom</p>
+                    </div>
+
+                    <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="icon"><i class="fa fa-photo"></i></div>
+                        <h4 class="title">{{ participant.getNom() }}</h4>
+                        <p class="description">Nom</p>
+                    </div>
+
+                    <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="icon"><i class="fa fa-bar-chart"></i></div>
+                        <h4 class="title">{{ participant.getTelephone() }}</h4>
+                        <p class="description">Telephone</p>
+                    </div>
+                    <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="icon"><i class="fa fa-bar-chart"></i></div>
+                        <h4 class="title">{{ participant.getMail() }}</h4>
+                        <p class="description">E-Mail</p>
+                    </div>
+                    <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="icon"><i class="fa fa-bar-chart"></i></div>
+                        <h4 class="title">Rennes{#{{ participant.getTelephone() }}#}</h4>
+                        <p class="description">Ville de Ratachement</p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight align-self-center">
+                    <img class="photoProfil" src="../upload/{{ participant.getPhoto() }}"/>
+                </div>
+            </div>
+                        </div>
+        {#<!--==========================
+Call To Action Section
+============================-->#}
+        <section id="call-to-action">
+            <div class="container wow fadeIn">
+                <div class="row">
+                    <div class="col-lg-9 text-center text-lg-left">
+                        <h3 class="cta-title">Sortir.com avec {{ participant.getPseudo() }}</h3>
+                        <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                    <div class="col-lg-3 cta-btn-container text-center">
+                        <a class="cta-btn align-middle" href="{{ path("sortie_liste") }}#about">Accueil</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>{#<!-- #call-to-action -->#}
+
+        {#<!--==========================
+        </section> {#<!-- #about -->
+
+                          Portfolio Section
+                        ============================-->#}
+
+
+
+
+{% endblock %}
+

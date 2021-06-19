@@ -1,0 +1,131 @@
+<div class="container mt-0">
+    {#Ancienne version#}
+    {#    <form id="filtre" class="form-horizontal" role="form" action="../listeSortie">#}
+    {#        <h3>Filtrer les sorties</h3>#}
+
+    {#        #}{# Dropdown de selection du site (lieu) #}
+    {#        <div class="row">#}
+    {#            {{ form_widget(formSite.nom) }}#}
+    {#            Siteid= {{ siteId }}#}
+
+    {#        </div>#}
+
+    {#        #}{# Les deux champs permettant de filtrer les sorties par date #}
+    {#        <div class="container">#}
+    {#            <label for="champRecherche">Le nom de la sortie contient : </label>#}
+    {#            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une sortie" aria-label="Search"#}
+    {#                   name="recherche">#}
+    {#            {{ recherche }}#}
+    {#        </div>#}
+
+    {#        <div id="rechercheDates">#}
+    {#            <fieldset>#}
+    {#                <div class="form-group">#}
+    {#                    <label for="dtp_input1" class="col-md-2 control-label">Entre le </label>#}
+    {#                    <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z"#}
+    {#                         data-date-format="dd MM yyyy - HH:ii" data-link-field="dtp_input1">#}
+    {#                        <input class="form-control" size="30" type="text" value="" name="dateDebutRecherche" readonly>#}
+    {#                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>#}
+    {#                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>#}
+    {#                    </div>#}
+    {#                    <input type="hidden" id="dtp_input1" value=""/><br/>#}
+    {#                    {{ dateDebutRecherche }}#}
+    {#                </div>#}
+    {#                <div class="form-group">#}
+    {#                    <label for="dtp_input2" class="col-md-2 control-label">Et le </label>#}
+    {#                    <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z"#}
+    {#                         data-date-format="dd MM yyyy - HH:ii" data-link-field="dtp_input1">#}
+    {#                        <input class="form-control" size="16" type="text" value="" name="dateFinRecherche" readonly>#}
+    {#                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>#}
+    {#                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>#}
+    {#                    </div>#}
+    {#                    <input type="hidden" id="dtp_input2" value=""/><br/>#}
+    {#                    {{ dateFinRecherche }}#}
+    {#                </div>#}
+    {#            </fieldset>#}
+    {#        </div>#}
+
+
+    {#        #}{# Checkboxes de filtre des sorties #}
+    {#        <div id="checkboxFiltre" class="container">#}
+    {#            <div class="form-check">#}
+    {#                <input class="form-check-input" type="checkbox" value="true" id="checkOrganisateur"#}
+    {#                       name="checkOrganisateur">#}
+    {#                <label class="form-check-label" for="checkOrganisateur">#}
+    {#                    Sorties dont je suis l'organisateur/trice#}
+    {#                </label>#}
+    {#                {{ checkOrganisateur }}#}
+    {#            </div>#}
+    {#            <div class="form-check">#}
+    {#                <input class="form-check-input" type="checkbox" value="true" id="checkInscrit" name="checkInscrit">#}
+    {#                <label class="form-check-label" for="checkInscrit">#}
+    {#                    Sorties auxquelles je suis inscrit/e#}
+    {#                </label>#}
+    {#                {{ checkInscrit }}#}
+    {#            </div>#}
+    {#            <div class="form-check">#}
+    {#                <input class="form-check-input" type="checkbox" value="true" id="checkPasInscrit"#}
+    {#                       name="checkPasInscrit">#}
+    {#                <label class="form-check-label" for="checkPasInscrit">#}
+    {#                    Sorties auxquelles je ne suis pas inscrit/e#}
+    {#                </label>#}
+    {#                {{ checkPasInscrit }}#}
+    {#            </div>#}
+    {#            <div class="form-check">#}
+    {#                <input class="form-check-input" type="checkbox" value="true" id="checkSortiesPassees"#}
+    {#                       name="checkSortiesPassees">#}
+    {#                <label class="form-check-label" for="checkSortiesPassees">#}
+    {#                    Sorties passées#}
+    {#                </label>#}
+    {#                {{ checkSortiesPassees }}#}
+    {#            </div>#}
+
+
+    {#            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>#}
+    {#        </div>#}
+    {#    </form>#}
+
+    {#Nouvelle version#}
+    {{ form_start(formFiltreRecherche, { "attr" : { "class" : "form-horizontal"}}) }}
+    <div class="container " >
+        <h3 class="text-2xl text-white" >Filtrer les sorties</h3>
+        <div class="row mx-md-n5">
+
+
+            <div class="col px-md-5 mt-4">
+        {{ form_widget(formFiltreRecherche.siteId) }}
+        <label for="filtre_recherche[recherche]">Le nom de la sortie contient: </label>
+        {{ form_widget(formFiltreRecherche.recherche) }}
+            </div>
+
+        <div class="col px-md-5 mb-4" id="rechercheTemporelle">
+            <label>Entre le </label>
+            {{ form_widget(formFiltreRecherche.dateDebutRecherche) }}
+            <label>Et le </label>
+            {{ form_widget(formFiltreRecherche.dateFinRecherche) }}
+        </div>
+
+            <div class="col px-md-2 mt-2">
+                {{ form_widget(formFiltreRecherche.checkOrganisateur) }}
+                {{ form_widget(formFiltreRecherche.checkUserInscrit) }}
+                {{ form_widget(formFiltreRecherche.checkUserPasInscrit) }}
+                {{ form_widget(formFiltreRecherche.checkSortiesPassees) }}
+            </div>
+
+            <div class="col px-md-5">
+                <div class="row">
+                    <div class="col">
+                        <a href="" class="button black float-left text-decoration-none mt-3" target="_blank" type="submit" onclick="this.closest('form').submit();return false;">Rechercher</a>
+                    </div>
+                    <div class=" clearfix col px-md-5">
+                        <a  href="{{ path("gestionEtat_creer") }}" class="button black  float-left text-decoration-none mt-3" target="_blank">Créer une sortie</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        {{ form_end(formFiltreRecherche) }}
+    </div>
+</div>
